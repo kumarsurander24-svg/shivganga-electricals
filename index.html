@@ -5,40 +5,114 @@
 <body style="text-align:center; font-family:Arial, sans-serif; background-color:#f4f4f9; color:#333; padding:20px; margin:0;">
 
     <div style="background-color:#003366; color:white; padding:30px; border-radius:0 0 20px 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-        <img src="logo.jpeg" alt="Logo" style="width:100px; height:100px; border-radius:50%; border:3px solid white; margin-bottom:10px;" onerror="this.src='logo.jpeg';">
-        <h1 style="margin:0;">⚡ शिवगंगा इलेक्ट्रिकल्स ⚡</h1>
+        
+        <img src="logo.jpeg.jpeg" onerror="this.src='logo.jpg.jpg'; this.onerror=function(){this.src='logo.jpeg'; this.onerror=function(){this.src='logo.jpg';}}" alt="Shivganga Logo" style="width:140px; height:140px; border-radius:50%; background:white; padding:5px; margin-bottom:15px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); object-fit:cover;">
+        
+        <h1 style="font-size:45px; margin:0; letter-spacing: 2px;">⚡ शिवगंगा इलेक्ट्रिकल्स ⚡</h1>
         <p style="font-size:20px; margin:10px 0 0 0; color:#ffcc00;"><b>आपका भरोसेमंद बिजली का साथी</b></p>
     </div>
 
-    <div style="background-color:white; border:1px solid #ddd; max-width:600px; margin:30px auto; padding:25px; border-radius:15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-        <h2 style="color:#003366; border-bottom:2px solid #ffcc00; padding-bottom:10px; margin-top:0;">हमारी सेवाएँ व सामान:</h2>
-        <ul style="list-style-type:none; padding:0; font-size:20px; line-height: 2.2; text-align:left;">
-            <li>🔧 रिपेयरिंग: पंखे, कूलर, गीजर, वॉशिंग मशीन, फ्रिज, मिक्सी</li>
-            <li>⚡ सेल्स: नए गीजर, वॉशिंग मशीन और सेकंड हैंड वॉशिंग मशीन</li>
-            <li>📦 ओरिजिनल स्पेयर पार्ट्स (सभी उपकरण)</li>
+    <div style="background:white; border:1px solid #ddd; max-width:600px; margin:30px auto; padding:25px; border-radius:15px; box-shadow: 0px 5px 15px rgba(0,0,0,0.05); text-align:left;">
+        <h2 style="color:#003366; border-bottom:2px solid #ffcc00; padding-bottom:10px; margin-top:0; text-align:center;">हमारे यहाँ मिलने वाले सामान व सेवाएं:</h2>
+        <ul style="list-style-type:none; padding:0; font-size:20px; line-height: 2.2;">
+            <li>💨 छत के पंखे, दीवार के पंखे और कूलर की रिपेयरिंग</li>
+            <li>🔥 गीजर की सर्विसिंग और फिटिंग का काम</li>
+            <li>🌀 वॉशिंग मशीन और फ्रिज (Refrigerator) की मरम्मत</li>
+            <li>🍹 मिक्सी (Mixer Grinder) और घरेलू उपकरणों का सुधार</li>
+            <li>🛠️ उचित व पारदर्शी दाम पर बेहतरीन सर्विस</li>
         </ul>
-
-        <h2 style="color:#003366; border-bottom:2px solid #ffcc00; padding-bottom:10px; margin-top:20px;">शेड्यूल बुकिंग / ऑर्डर:</h2>
-        <input type="text" id="custname" placeholder="आपका नाम" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ccc; border-radius:5px;"><br>
-        <input type="text" id="custphone" placeholder="मोबाइल नंबर" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ccc; border-radius:5px;"><br>
-        <input type="text" id="appliance" placeholder="क्या चाहिए या क्या खराब है?" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ccc; border-radius:5px;"><br>
-        
-        <button onclick="sendWhatsApp()" style="background-color:#25d366; color:white; border:none; padding:15px 30px; font-size:18px; border-radius:10px; cursor:pointer; width:100%; font-weight:bold; margin-top:15px;">व्हाट्सएप पर भेजें</button>
     </div>
 
+    <div style="background:white; border:1px solid #ddd; max-width:600px; margin:30px auto; padding:25px; border-radius:15px; box-shadow: 0px 5px 15px rgba(0,0,0,0.05); text-align:left;">
+        <h2 style="color:#003366; border-bottom:2px solid #25D366; padding-bottom:10px; margin-top:0; text-align:center;">🛠️ शिकायत / सर्विस बुकिंग फॉर्म</h2>
+        <p style="text-align:center; color:#666; font-size:16px; margin-top:5px;">(काम देखकर केवल जायज charge लिया जाएगा)</p>
+        
+        <form onsubmit="sendToWhatsApp(event)" style="font-size:18px; line-height: 1.8;">
+            <label style="font-weight:bold; color:#003366;">आपका नाम (Your Name):</label><br>
+            <input type="text" id="custName" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:8px; font-size:16px;"><br>
+
+            <label style="font-weight:bold; color:#003366;">मोबाइल नंबर (Mobile No.):</label><br>
+            <input type="tel" id="custPhone" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:8px; font-size:16px;"><br>
+
+            <label style="font-weight:bold; color:#003366;">किस उपकरण में खराबी है? (Select Appliance):</label><br>
+            <select id="appliance" onchange="checkAppliance()" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:8px; font-size:16px;">
+                <option value="पंखा (Fan)">💨 पंखा (Fan)</option>
+                <option value="गीजर (Geyser)">🔥 गीजर (Geyser)</option>
+                <option value="वॉशिंग मशीन (Washing Machine)">🌀 वॉशिंग मशीन (Washing Machine)</option>
+                <option value="फ्रिज (Refrigerator)">❄️ फ्रिज (Refrigerator)</option>
+                <option value="कूलर (Cooler)">🌬️ कूलर (Cooler)</option>
+                <option value="मिक्सी (Mixer)">🍹 मिक्सी (Mixer Grinder)</option>
+                <option value="अन्य / पता नहीं (Other)">❓ अन्य / पता नहीं (Other)</option>
+            </select><br>
+
+            <div id="companyDiv" style="display:none; margin-bottom:15px;">
+                <label style="font-weight:bold; color:#003366;">कंपनी का नाम चुनें (Select Brand):</label><br>
+                <select id="brandName" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:8px; font-size:16px;">
+                    <option value="सैमसंग (Samsung)">सैमसंग (Samsung)</option>
+                    <option value="एलजी (LG)">एलजी (LG)</option>
+                    <option value="गोदरेज (Godrej)">गोदरेज (Godrej)</option>
+                    <option value="बजाज (Bajaj)">बजाज (Bajaj)</option>
+                    <option value="व्हर्लपूल (Whirlpool)">व्हर्लपूल (Whirlpool)</option>
+                    <option value="हैवेल्स (Havells)">हैवेल्स (Havells)</option>
+                    <option value="आईएफबी (IFB)">आईएफबी (IFB)</option>
+                    <option value="क्रॉम्पटन (Crompton)">क्रॉम्पटन (Crompton)</option>
+                    <option value="लोकल / अन्य कंपनी (Local / Other)">🛠️ लोकल / अन्य कंपनी (Local / Other)</option>
+                </select><br>
+            </div>
+
+            <label style="font-weight:bold; color:#003366;">खराबी या अपनी बात यहाँ लिखें (Describe Issue):</label><br>
+            <textarea id="issue" rows="3" placeholder="यहाँ लिखें कि क्या परेशानी आ रही है..." style="width:100%; padding:10px; margin-bottom:20px; border:1px solid #ccc; border-radius:8px; font-size:16px; font-family: Arial, sans-serif;"></textarea><br>
+
+            <button type="submit" style="width:100%; background-color:#25D366; color:white; font-size:20px; font-weight:bold; padding:12px; border:none; border-radius:30px; cursor:pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                💬 व्हाट्सएप पर शिकायत दर्ज करें
+            </button>
+        </form>
+    </div>
+
+    <div style="background:#eef6ff; max-width:600px; margin:20px auto; padding:20px; border-radius:15px; border:1px dashed #003366;">
+        <h3 style="color:#003366; margin-top:0; font-size:22px;">📍 दुकान का पता और संपर्क:</h3>
+        <p style="font-size:18px; margin:5px 0;"><b>प्रोप्राइटर:</b> आदर्श | <b>मार्गदर्शक:</b> श्रीमान सुरेंद्र कुमार जी</p>
+        <p style="font-size:18px; margin:5px 0; color:#555;"><b>जैन मार्केट, रेलवे रोड, फैशन सिटी के सामने, ऋषिकेश</b></p>
+    </div>
+
+    <p style="margin-top:40px; font-size:18px; font-weight:bold; color:#003366;">जय श्री राम</p>
+
     <script>
-        function sendWhatsApp() {
-            var name = document.getElementById("custname").value;
-            var phone = document.getElementById("custphone").value;
-            var item = document.getElementById("appliance").value;
-            
-            var msg = "*नया ऑर्डर/शिकायत - शिवगंगा इलेक्ट्रिकल्स*%0A%0A" +
-                      "*नाम:* " + name + "%0A" +
-                      "*मोबाइल:* " + phone + "%0A" +
-                      "*कार्य/सामान:* " + item;
-            
-            window.open("https://wa.me/919410103614?text=" + msg, "_blank");
+    function checkAppliance() {
+        var appliance = document.getElementById('appliance').value;
+        var companyDiv = document.getElementById('companyDiv');
+        
+        if (appliance.includes("Geyser") || appliance.includes("Washing Machine") || appliance.includes("Refrigerator")) {
+            companyDiv.style.display = "block";
+        } else {
+            companyDiv.style.display = "none";
         }
+    }
+
+    function sendToWhatsApp(event) {
+        event.preventDefault();
+        var name = document.getElementById('custName').value;
+        var phone = document.getElementById('custPhone').value;
+        var appliance = document.getElementById('appliance').value;
+        var issue = document.getElementById('issue').value;
+        
+        var brand = "";
+        var companyDiv = document.getElementById('companyDiv');
+        if (companyDiv.style.display === "block") {
+            brand = "%0A🏢 *कंपनी/ब्रांड:* " + document.getElementById('brandName').value;
+        }
+
+        if(issue == "") { issue = "ग्राहक ने विवरण नहीं लिखा है।"; }
+
+        var message = "⚡ *नई शिकायत - शिवगंगा इलेक्ट्रिकल्स* ⚡%0A%0A" +
+                      "👤 *नाम:* " + name + "%0A" +
+                      "📞 *मोबाइल:* " + phone + "%0A" +
+                      "⚙️ *उपकरण:* " + appliance + brand + "%0A" +
+                      "📝 *खराबी का विवरण:* " + issue;
+
+        window.open("https://wa.me/919410103614?text=" + message, "_blank");
+    }
     </script>
+
 </body>
 </html>
