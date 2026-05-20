@@ -1,1 +1,44 @@
-3799eabe151c57804e3b0d8ba026f112bb563679
+<html>
+<head>
+    <title>Shivganga Electricals</title>
+</head>
+<body style="text-align:center; font-family:Arial, sans-serif; background-color:#f4f4f9; color:#333; padding:20px; margin:0;">
+
+    <div style="background-color:#003366; color:white; padding:30px; border-radius:0 0 20px 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+        <img src="logo.jpeg" alt="Logo" style="width:100px; height:100px; border-radius:50%; border:3px solid white; margin-bottom:10px;" onerror="this.src='logo.jpeg';">
+        <h1 style="margin:0;">⚡ शिवगंगा इलेक्ट्रिकल्स ⚡</h1>
+        <p style="font-size:20px; margin:10px 0 0 0; color:#ffcc00;"><b>आपका भरोसेमंद बिजली का साथी</b></p>
+    </div>
+
+    <div style="background-color:white; border:1px solid #ddd; max-width:600px; margin:30px auto; padding:25px; border-radius:15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        <h2 style="color:#003366; border-bottom:2px solid #ffcc00; padding-bottom:10px; margin-top:0;">हमारी सेवाएँ व सामान:</h2>
+        <ul style="list-style-type:none; padding:0; font-size:20px; line-height: 2.2; text-align:left;">
+            <li>🔧 रिपेयरिंग: पंखे, कूलर, गीजर, वॉशिंग मशीन, फ्रिज, मिक्सी</li>
+            <li>⚡ सेल्स: नए गीजर, वॉशिंग मशीन और सेकंड हैंड वॉशिंग मशीन</li>
+            <li>📦 ओरिजिनल स्पेयर पार्ट्स (सभी उपकरण)</li>
+        </ul>
+
+        <h2 style="color:#003366; border-bottom:2px solid #ffcc00; padding-bottom:10px; margin-top:20px;">शेड्यूल बुकिंग / ऑर्डर:</h2>
+        <input type="text" id="custname" placeholder="आपका नाम" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ccc; border-radius:5px;"><br>
+        <input type="text" id="custphone" placeholder="मोबाइल नंबर" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ccc; border-radius:5px;"><br>
+        <input type="text" id="appliance" placeholder="क्या चाहिए या क्या खराब है?" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ccc; border-radius:5px;"><br>
+        
+        <button onclick="sendWhatsApp()" style="background-color:#25d366; color:white; border:none; padding:15px 30px; font-size:18px; border-radius:10px; cursor:pointer; width:100%; font-weight:bold; margin-top:15px;">व्हाट्सएप पर भेजें</button>
+    </div>
+
+    <script>
+        function sendWhatsApp() {
+            var name = document.getElementById("custname").value;
+            var phone = document.getElementById("custphone").value;
+            var item = document.getElementById("appliance").value;
+            
+            var msg = "*नया ऑर्डर/शिकायत - शिवगंगा इलेक्ट्रिकल्स*%0A%0A" +
+                      "*नाम:* " + name + "%0A" +
+                      "*मोबाइल:* " + phone + "%0A" +
+                      "*कार्य/सामान:* " + item;
+            
+            window.open("https://wa.me/919410103614?text=" + msg, "_blank");
+        }
+    </script>
+</body>
+</html>
