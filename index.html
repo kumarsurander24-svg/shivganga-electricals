@@ -108,6 +108,9 @@
             outline: none;
             background-color: #fff;
         }
+        #company-group {
+            display: none; /* शुरू में छुपा रहेगा */
+        }
         .btn-submit {
             display: block;
             width: 100%;
@@ -149,7 +152,7 @@
         </ul>
 
         <div class="delivery-box">
-            <strong>🚚 होम डिलीवरी व होम守र सर्विस उपलब्ध:</strong><br>
+            <strong>🚚 होम डिलीवरी व होम सर्विस उपलब्ध:</strong><br>
             आप घर बैठे भी रिपेयरिंग के लिए बुकिंग कर सकते हैं या सामान मंगवा सकते हैं। हमारी टीम आपके घर सेवा देने पहुँचेगी!
         </div>
 
@@ -162,12 +165,12 @@
 
         <div class="form-group">
             <label>मोबाइल नंबर:</label>
-            <input type="tel" id="phone" placeholder="अपना mobile नंबर लिखें">
+            <input type="tel" id="phone" placeholder="अपना मोबाइल नंबर लिखें">
         </div>
 
         <div class="form-group">
             <label>उपकरण चुनें (क्या खराब है / क्या चाहिए):</label>
-            <select id="device">
+            <select id="device" onchange="checkDevice()">
                 <option value="">-- कृपया एक विकल्प चुनें --</option>
                 <option value="पँखा (Fan)">पँखा (Fan)</option>
                 <option value="कूलर (Cooler)">कूलर (Cooler)</option>
@@ -177,6 +180,11 @@
                 <option value="मिक्सी (Mixer)">मिक्सी (Mixer)</option>
                 <option value="अन्य सामान / स्पेयर पार्ट्स">अन्य सामान / स्पेयर पार्ट्स</option>
             </select>
+        </div>
+
+        <div class="form-group" id="company-group">
+            <label>फ्रिज किस कंपनी का है? (कंपनी का नाम लिखें):</label>
+            <input type="text" id="company_name" placeholder="उदा. LG, Samsung, Whirlpool आदि">
         </div>
 
         <div class="form-group">
@@ -189,10 +197,25 @@
 </div>
 
 <script>
+    // जब ग्राहक उपकरण बदलेगा, तब यह चेक करेगा
+    function checkDevice() {
+        var deviceSelect = document.getElementById('device');
+        var companyGroup = document.getElementById('company-group');
+        
+        // अगर फ्रिज चुना है तो कंपनी वाला डिब्बा दिखाओ, वरना छुपा दो
+        if (deviceSelect.value === "फ्रिज (Fridge)") {
+            companyGroup.style.display = "block";
+        } else {
+            companyGroup.style.style.display = "none";
+            document.getElementById('company_name').value = ""; // साफ करने के लिए
+        }
+    }
+
     function sendToWhatsApp() {
         var name = document.getElementById('name').value;
         var phone = document.getElementById('phone').value;
         var device = document.getElementById('device').value;
+        var companyName = document.getElementById('company_name').value;
         var issue = document.getElementById('issue').value;
         
         if(name == "" || phone == "" || device == "" || issue == "") {
@@ -200,13 +223,25 @@
             return;
         }
 
+        // अगर फ्रिज चुना है और कंपनी नहीं लिखी तो टोकना
+        if(device === "फ्रिज (Fridge)" && companyName == "") {
+            alert("कृपया फ्रिज की कंपनी का नाम भी लिखें!");
+            return;
+        }
+
         var phoneNumber = "919410103614"; 
         
-        var message = "*शिवगंगा इलेक्ट्रिकल्स - नया ऑर्डर/बुकिंग*\n\n" +
+        var message = "*शिवगंगा重建 इलेक्ट्रिकल्स - नया ऑर्डर/बुकिंग*\n\n" +
                       "*नाम:* " + name + "\n" +
                       "*मोबाइल नंबर:* " + phone + "\n" +
-                      "*चुना गया उपकरण:* " + device + "\n" +
-                      "*समस्या / विवरण:* " + issue;
+                      "*चुना गया उपकरण:* " + device + "\n";
+                      
+        // अगर कंपनी लिखी है तो ही मैसेज में जोड़ना
+        if(companyName !== "") {
+            message += "*कंपनी का नाम:* " + companyName + "\n";
+        }
+        
+        message += "*समस्या / विवरण:* " + issue;
                       
         var encodedMessage = encodeURIComponent(message);
         var whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;
