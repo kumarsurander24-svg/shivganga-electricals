@@ -148,7 +148,7 @@
         <ul class="services-list">
             <li><strong>🔧 रिपेयरिंग:</strong> पंखे, कूलर, गीजर, वॉशिंग मशीन, फ्रिज, मिक्सी आदि।</li>
             <li><strong>⚡ सेल्स:</strong> नए गीजर, वॉशिंग मशीन और सेकंड हैंड वॉशिंग मशीन।</li>
-            <li><strong>📦 स्पेयर पार्ट्स:</strong> सभी उपकरणों के ओरिजिनल स्पेयर पार्ट्स उपलब्ध हैं।</li>
+            <li><strong>📦坚 स्पेयर पार्ट्स:</strong> सभी उपकरणों के ओरिजिनल स्पेयर पार्ट्स उपलब्ध हैं।</li>
         </ul>
 
         <div class="delivery-box">
@@ -202,11 +202,11 @@
         var deviceSelect = document.getElementById('device');
         var companyGroup = document.getElementById('company-group');
         
-        // अगर फ्रिज चुना है तो कंपनी वाला डिब्बा दिखाओ, वरना छुपा दो
+        // अब यह बिल्कुल सही काम करेगा भाई
         if (deviceSelect.value === "फ्रिज (Fridge)") {
             companyGroup.style.display = "block";
         } else {
-            companyGroup.style.style.display = "none";
+            companyGroup.style.display = "none";
             document.getElementById('company_name').value = ""; // साफ करने के लिए
         }
     }
@@ -223,7 +223,6 @@
             return;
         }
 
-        // अगर फ्रिज चुना है और कंपनी नहीं लिखी तो टोकना
         if(device === "फ्रिज (Fridge)" && companyName == "") {
             alert("कृपया फ्रिज की कंपनी का नाम भी लिखें!");
             return;
@@ -231,12 +230,11 @@
 
         var phoneNumber = "919410103614"; 
         
-        var message = "*शिवगंगा重建 इलेक्ट्रिकल्स - नया ऑर्डर/बुकिंग*\n\n" +
+        var message = "*शिवगंगा इलेक्ट्रिकल्स - नया ऑर्डर/बुकिंग*\n\n" +
                       "*नाम:* " + name + "\n" +
                       "*मोबाइल नंबर:* " + phone + "\n" +
                       "*चुना गया उपकरण:* " + device + "\n";
                       
-        // अगर कंपनी लिखी है तो ही मैसेज में जोड़ना
         if(companyName !== "") {
             message += "*कंपनी का नाम:* " + companyName + "\n";
         }
