@@ -75,12 +75,6 @@
             margin-bottom: 12px;
             font-size: 15px;
             line-height: 1.6;
-            display: flex;
-            align-items: flex-start;
-        }
-        .services-list li span {
-            margin-right: 10px;
-            font-size: 18px;
         }
         .delivery-box {
             background-color: #fff9e6;
@@ -101,7 +95,7 @@
             font-size: 14px;
             color: #555;
         }
-        .form-group input, .form-group textarea {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
@@ -109,7 +103,7 @@
             font-size: 15px;
             background-color: #fafafa;
         }
-        .form-group input:focus, .form-group textarea:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             border-color: #003366;
             outline: none;
             background-color: #fff;
@@ -149,17 +143,18 @@
     <div class="content">
         <h2>हमारी सेवाएँ व सामान:</h2>
         <ul class="services-list">
-            <li><span>🔧</span> <strong>रिपेयरिंग:</strong> पंखे, कूलर, गीजर, वॉशिंग मशीन, फ्रिज, मिक्सी आदि।</li>
-            <li><span>⚡</span> <strong>सेल्स:</strong> नए गीजर, वॉशिंग मशीन और सेकंड हैंड वॉशिंग मशीन।</li>
-            <li><span>📦</span> <strong>स्पेयर पार्ट्स:</strong> सभी उपकरणों के ओरिजिनल स्पेयर पार्ट्स उपलब्ध हैं।</li>
+            <li><strong>🔧 रिपेयरिंग:</strong> पंखे, कूलर, गीजर, वॉशिंग मशीन, फ्रिज, मिक्सी आदि।</li>
+            <li><strong>⚡ सेल्स:</strong> नए गीजर, वॉशिंग मशीन और सेकंड हैंड वॉशिंग मशीन।</li>
+            <li><strong>📦 स्पेयर पार्ट्स:</strong> सभी उपकरणों के ओरिजिनल स्पेयर पार्ट्स उपलब्ध हैं।</li>
         </ul>
 
         <div class="delivery-box">
-            <strong>🚚 होम डिलीवरी व होम सर्विस उपलब्ध:</strong><br>
+            <strong>🚚 होम डिलीवरी व होम守र सर्विस उपलब्ध:</strong><br>
             आप घर बैठे भी रिपेयरिंग के लिए बुकिंग कर सकते हैं या सामान मंगवा सकते हैं। हमारी टीम आपके घर सेवा देने पहुँचेगी!
         </div>
 
         <h2>शेड्यूल बुकिंग / ऑर्डर फॉर्म:</h2>
+        
         <div class="form-group">
             <label>आपका नाम:</label>
             <input type="text" id="name" placeholder="अपना नाम लिखें">
@@ -167,12 +162,26 @@
 
         <div class="form-group">
             <label>मोबाइल नंबर:</label>
-            <input type="tel" id="phone" placeholder="अपना मोबाइल नंबर लिखें">
+            <input type="tel" id="phone" placeholder="अपना mobile नंबर लिखें">
         </div>
 
         <div class="form-group">
-            <label>क्या चाहिए या क्या खराब है? (अपनी समस्या लिखें):</label>
-            <textarea id="issue" rows="3" placeholder="यहाँ विस्तार से लिखें..."></textarea>
+            <label>उपकरण चुनें (क्या खराब है / क्या चाहिए):</label>
+            <select id="device">
+                <option value="">-- कृपया एक विकल्प चुनें --</option>
+                <option value="पँखा (Fan)">पँखा (Fan)</option>
+                <option value="कूलर (Cooler)">कूलर (Cooler)</option>
+                <option value="गीजर (Geyser)">गीजर (Geyser)</option>
+                <option value="वाशिंग मशीन (Washing Machine)">वाशिंग मशीन (Washing Machine)</option>
+                <option value="फ्रिज (Fridge)">फ्रिज (Fridge)</option>
+                <option value="मिक्सी (Mixer)">मिक्सी (Mixer)</option>
+                <option value="अन्य सामान / स्पेयर पार्ट्स">अन्य सामान / स्पेयर पार्ट्स</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>क्या समस्या है? (विस्तार से लिखें):</label>
+            <textarea id="issue" rows="3" placeholder="यहाँ अपनी समस्या या ज़रूरत लिखें..."></textarea>
         </div>
 
         <button class="btn-submit" onclick="sendToWhatsApp()">व्हाट्सएप पर भेजें</button>
@@ -183,19 +192,21 @@
     function sendToWhatsApp() {
         var name = document.getElementById('name').value;
         var phone = document.getElementById('phone').value;
+        var device = document.getElementById('device').value;
         var issue = document.getElementById('issue').value;
         
-        if(name == "" || phone == "" || issue == "") {
-            alert("कृपया सभी जानकारी भरें!");
+        if(name == "" || phone == "" || device == "" || issue == "") {
+            alert("कृपया सभी जानकारी भरें और उपकरण का चुनाव करें!");
             return;
         }
 
-        var phoneNumber = "919410103614"; // यहाँ अपना व्हाट्सएप नंबर डालें
+        var phoneNumber = "919410103614"; 
         
         var message = "*शिवगंगा इलेक्ट्रिकल्स - नया ऑर्डर/बुकिंग*\n\n" +
                       "*नाम:* " + name + "\n" +
                       "*मोबाइल नंबर:* " + phone + "\n" +
-                      "*समस्या / सामान की ज़रूरत:* " + issue;
+                      "*चुना गया उपकरण:* " + device + "\n" +
+                      "*समस्या / विवरण:* " + issue;
                       
         var encodedMessage = encodeURIComponent(message);
         var whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;
